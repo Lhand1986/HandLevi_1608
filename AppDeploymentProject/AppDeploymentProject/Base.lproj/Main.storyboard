@@ -126,7 +126,7 @@
         <!--TillMainViewController-->
         <scene sceneID="PcD-DV-7iW">
             <objects>
-                <viewController title="Till" id="Moo-Px-Rnh" userLabel="TillMainViewController" sceneMemberID="viewController">
+                <viewController title="Till" id="Moo-Px-Rnh" userLabel="TillMainViewController" customClass="TillMainViewController" customModule="AppDeploymentProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="otj-Dj-lPH"/>
                         <viewControllerLayoutGuide type="bottom" id="2JG-bJ-7Hh"/>
@@ -138,6 +138,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygh-b5-a8Z" userLabel="BatchButton">
                                 <rect key="frame" x="50" y="91" width="75" height="30"/>
                                 <state key="normal" title="End of Day"/>
+                                <connections>
+                                    <action selector="batchReport:" destination="Moo-Px-Rnh" eventType="touchUpInside" id="VAZ-5J-daB"/>
+                                    <segue destination="yVb-1U-RtS" kind="show" id="uYf-d0-iWW"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8O8-29-4HB" userLabel="EqualView">
                                 <rect key="frame" x="506" y="64" width="84" height="84"/>
@@ -149,6 +153,9 @@
                                         <state key="normal" title="=">
                                             <color key="titleColor" red="0.58431372550000005" green="0.59607843140000005" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="nrD-WD-kJQ" kind="show" id="akT-9i-nmv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.41176470588235292" green="0.94901960784313721" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
@@ -620,6 +627,10 @@
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="calculateLabel" destination="uIA-Yr-O8C" id="hVc-HD-pTd"/>
+                        <outlet property="numberPad" destination="7tJ-zo-AH1" id="6As-Zc-qme"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XGm-Si-aSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -642,7 +653,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzg-FB-gge" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2537" y="-294"/>
+            <point key="canvasLocation" x="2537" y="-286"/>
         </scene>
         <!--TillBatchViewController-->
         <scene sceneID="p1I-52-bPo">
