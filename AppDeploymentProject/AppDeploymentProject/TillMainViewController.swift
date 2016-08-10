@@ -14,6 +14,9 @@ class TillMainViewController: UIViewController {
     
     @IBOutlet weak var numberPad: UIView!
     
+    var receiptItems: [Float] = []
+    
+    var numberCheck: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,32 +32,36 @@ class TillMainViewController: UIViewController {
     @IBAction func batchReport(sender: AnyObject) {
     }
     
-    //MARK - User defined functions
-    
-    //MARK: Touch Handling
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        for touch in touches {
-            print(touch.locationInView(numberPad))
-            print(touch.description)
+    @IBAction func numberSelect(sender: AnyObject) {
+        let buttonPress = sender.currentTitle!
+        print(buttonPress!)
+        if numberCheck {
+            calculateLabel!.text = calculateLabel!.text! + String(buttonPress!)
+        } else {
+            calculateLabel.text = String(buttonPress!)
+            numberCheck = true
         }
+    }
+    @IBAction func addButton(sender: UIButton) {
+        
+        if let item = Float(calculateLabel.text!) {
+            receiptItems.append(item)
+            print("Items: \(receiptItems)")
+        }
+    }
+    @IBAction func subButton(sender: UIButton) {
     }
     
     
-    //Touch function
-//    func updateTouches(touches: Set<UITouch>) {
-//        for touch in touches {
-//            print(touch.locationInView(<#T##view: UIView?##UIView?#>))
-//        }
-//    }
+    //MARK - User defined functions
+    
 
     /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // In a storyboard-based application, you will often want to do a little preparation before navigation*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        print(segue.identifier)
     }
-    */
 
 }
