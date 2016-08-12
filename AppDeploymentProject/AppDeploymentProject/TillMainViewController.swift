@@ -18,6 +18,8 @@ class TillMainViewController: UIViewController {
     
     var numberCheck: Bool = false
     
+    var decimalCheck: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,7 +36,6 @@ class TillMainViewController: UIViewController {
     
     @IBAction func numberSelect(sender: AnyObject) {
         let buttonPress = sender.currentTitle!
-        print(buttonPress!)
         if numberCheck {
             calculateLabel!.text = calculateLabel!.text! + String(buttonPress!)
         } else {
@@ -45,11 +46,21 @@ class TillMainViewController: UIViewController {
     @IBAction func addButton(sender: UIButton) {
         
         if let item = Float(calculateLabel.text!) {
-            receiptItems.append(item)
-            print("Items: \(receiptItems)")
+            let testValue = floorf(item * 100) / 100
+            receiptItems.append(testValue)
+            calculateLabel.text = nil
+            numberCheck = false
         }
     }
     @IBAction func subButton(sender: UIButton) {
+        //Perform optional chaining on calculateLabel, append the negative value to the receiptItems array
+        if let item = calculateLabel.text {
+            var testValue = floorf(Float(item)! * 100) / 100
+            testValue = testValue - (testValue*2)
+            receiptItems.append(testValue)
+            calculateLabel.text = nil
+            numberCheck = false
+        }
     }
     
     
@@ -61,7 +72,10 @@ class TillMainViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(segue.identifier)
+        if segue.identifier == "toReceipt" {
+            let receiptDestination = segue.destinationViewController as! TillReceiptViewController
+            receiptDestination.receiptItems = receiptItems
+        }
     }
 
 }

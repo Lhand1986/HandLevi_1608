@@ -17,6 +17,8 @@
 		5D585E271D593B2400AA9EE8 /* AppDeploymentProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D585E261D593B2400AA9EE8 /* AppDeploymentProjectUITests.swift */; };
 		5D585E351D5A53FA00AA9EE8 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D585E341D5A53FA00AA9EE8 /* Receipt.swift */; };
 		5D585E371D5A716200AA9EE8 /* TillMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D585E361D5A716200AA9EE8 /* TillMainViewController.swift */; };
+		5DA272A71D5D0D9800ECA54B /* TillReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA272A61D5D0D9800ECA54B /* TillReceiptViewController.swift */; };
+		5DA272A91D5D321200ECA54B /* TillReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA272A81D5D321200ECA54B /* TillReceiptCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		5D585E281D593B2400AA9EE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D585E341D5A53FA00AA9EE8 /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		5D585E361D5A716200AA9EE8 /* TillMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TillMainViewController.swift; sourceTree = "<group>"; };
+		5DA272A61D5D0D9800ECA54B /* TillReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TillReceiptViewController.swift; sourceTree = "<group>"; };
+		5DA272A81D5D321200ECA54B /* TillReceiptCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TillReceiptCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 				5D585E0A1D593B2400AA9EE8 /* AppDeploymentProject.xcdatamodeld */,
 				5D585E341D5A53FA00AA9EE8 /* Receipt.swift */,
 				5D585E361D5A716200AA9EE8 /* TillMainViewController.swift */,
+				5DA272A61D5D0D9800ECA54B /* TillReceiptViewController.swift */,
+				5DA272A81D5D321200ECA54B /* TillReceiptCell.swift */,
 			);
 			path = AppDeploymentProject;
 			sourceTree = "<group>";
@@ -265,11 +271,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DA272A71D5D0D9800ECA54B /* TillReceiptViewController.swift in Sources */,
 				5D585E351D5A53FA00AA9EE8 /* Receipt.swift in Sources */,
 				5D585E0C1D593B2400AA9EE8 /* AppDeploymentProject.xcdatamodeld in Sources */,
 				5D585E061D593B2400AA9EE8 /* ViewController.swift in Sources */,
 				5D585E041D593B2400AA9EE8 /* AppDelegate.swift in Sources */,
 				5D585E371D5A716200AA9EE8 /* TillMainViewController.swift in Sources */,
+				5DA272A91D5D321200ECA54B /* TillReceiptCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +504,7 @@
 				5D585E2D1D593B2400AA9EE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5D585E2E1D593B2400AA9EE8 /* Build configuration list for PBXNativeTarget "AppDeploymentProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +513,7 @@
 				5D585E301D593B2400AA9EE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5D585E311D593B2400AA9EE8 /* Build configuration list for PBXNativeTarget "AppDeploymentProjectUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +522,7 @@
 				5D585E331D593B2400AA9EE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

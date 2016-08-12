@@ -13,6 +13,4 @@ class Receipt {
     var taxes: Int!
     var subTotal: Int!
     var total: Int!
-    
-    
 }
