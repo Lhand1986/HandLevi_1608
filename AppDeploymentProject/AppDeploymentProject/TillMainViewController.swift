@@ -14,20 +14,19 @@ class TillMainViewController: UIViewController {
     
     @IBOutlet weak var numberPad: UIView!
     
-    var receiptItems: [Float] = []
+    // Initialization of singleton
+    let receiptItems = ReceiptData.sharedInstance
     
     var numberCheck: Bool = false
     
-    var decimalCheck: Bool = true
+//    var decimalCheck: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK - IBActions
@@ -47,7 +46,8 @@ class TillMainViewController: UIViewController {
         
         if let item = Float(calculateLabel.text!) {
             let testValue = floorf(item * 100) / 100
-            receiptItems.append(testValue)
+            receiptItems.itemArray.append(testValue)
+            
             calculateLabel.text = nil
             numberCheck = false
         }
@@ -57,7 +57,7 @@ class TillMainViewController: UIViewController {
         if let item = calculateLabel.text {
             var testValue = floorf(Float(item)! * 100) / 100
             testValue = testValue - (testValue*2)
-            receiptItems.append(testValue)
+            receiptItems.itemArray.append(testValue)
             calculateLabel.text = nil
             numberCheck = false
         }
@@ -65,7 +65,6 @@ class TillMainViewController: UIViewController {
     
     
     //MARK - User defined functions
-    
 
     /*
     // MARK: - Navigation
@@ -73,8 +72,8 @@ class TillMainViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toReceipt" {
-            let receiptDestination = segue.destinationViewController as! TillReceiptViewController
-            receiptDestination.receiptItems = receiptItems
+//            print(receiptItems.itemArray)
+//            let receiptDestination = segue.destinationViewController as! TillReceiptViewController
         }
     }
 

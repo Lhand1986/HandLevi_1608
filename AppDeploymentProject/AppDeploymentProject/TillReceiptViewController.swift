@@ -15,14 +15,15 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var receiptTable: UITableView!
     
-    var receiptItems: [Float] = []
+    //Initialization of singleton
+    let receiptItems = ReceiptData.sharedInstance
     var receiptSubtotal: Float! = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        for i in 0..<receiptItems.count {
-            receiptSubtotal = receiptSubtotal + receiptItems[i]
+        print(receiptItems.itemArray)
+        for i in 0..<receiptItems.itemArray.count {
+            receiptSubtotal = receiptSubtotal + receiptItems.itemArray[i]
         }
         subTotalLabel.text = String(receiptSubtotal)
         
@@ -31,7 +32,7 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
          totalLabel.text = String(taxes + receiptSubtotal)
          */
         
-        print(receiptItems.count)
+        print(receiptItems.itemArray.count)
 //        receiptTable.dataSource = self
 
         // Do any additional setup after loading the view.
@@ -49,19 +50,35 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return receiptItems.count
-//        return 2
+        return receiptItems.itemArray.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reusableCell", forIndexPath: indexPath) as! TillReceiptCell
-//        cell!.textLabel?.text = "Floof"
-        cell.setupCell(String(receiptItems[indexPath.row]))
+        cell.setupCell(String(receiptItems.itemArray[indexPath.row]))
         return cell
     }
     
     @IBAction func printButton(sender: AnyObject) {
+        //Save totals out for use in the batch report on print
+        print(Float(receiptSubtotal))
+        receiptItems.batchTotalArray.append(receiptSubtotal)
+        
     }
     @IBAction func cancelButton(sender: AnyObject) {
+        receiptItems.itemArray = []
+        clearItems()
+//        receiptTable.reloadData()
+        self.navigationController?.popViewControllerAnimated(true)
+        
+    }
+    
+    // MARK: User defined functions
+    
+    func clearItems() {
+        receiptSubtotal = 0.0
+        subTotalLabel.text = ""
+        taxesLabel.text = ""
+        totalLabel.text = ""
     }
 
     /*

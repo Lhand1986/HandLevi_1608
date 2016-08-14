@@ -15,10 +15,12 @@
 		5D585E111D593B2400AA9EE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D585E0F1D593B2400AA9EE8 /* LaunchScreen.storyboard */; };
 		5D585E1C1D593B2400AA9EE8 /* AppDeploymentProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D585E1B1D593B2400AA9EE8 /* AppDeploymentProjectTests.swift */; };
 		5D585E271D593B2400AA9EE8 /* AppDeploymentProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D585E261D593B2400AA9EE8 /* AppDeploymentProjectUITests.swift */; };
-		5D585E351D5A53FA00AA9EE8 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D585E341D5A53FA00AA9EE8 /* Receipt.swift */; };
+		5D585E351D5A53FA00AA9EE8 /* ReceiptData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D585E341D5A53FA00AA9EE8 /* ReceiptData.swift */; };
 		5D585E371D5A716200AA9EE8 /* TillMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D585E361D5A716200AA9EE8 /* TillMainViewController.swift */; };
 		5DA272A71D5D0D9800ECA54B /* TillReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA272A61D5D0D9800ECA54B /* TillReceiptViewController.swift */; };
 		5DA272A91D5D321200ECA54B /* TillReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA272A81D5D321200ECA54B /* TillReceiptCell.swift */; };
+		5DA272AB1D5FE66100ECA54B /* TillBatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA272AA1D5FE66100ECA54B /* TillBatchViewController.swift */; };
+		5DA272AD1D5FE93800ECA54B /* BatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA272AC1D5FE93800ECA54B /* BatchCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +55,12 @@
 		5D585E221D593B2400AA9EE8 /* AppDeploymentProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppDeploymentProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D585E261D593B2400AA9EE8 /* AppDeploymentProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDeploymentProjectUITests.swift; sourceTree = "<group>"; };
 		5D585E281D593B2400AA9EE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D585E341D5A53FA00AA9EE8 /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		5D585E341D5A53FA00AA9EE8 /* ReceiptData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptData.swift; sourceTree = "<group>"; };
 		5D585E361D5A716200AA9EE8 /* TillMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TillMainViewController.swift; sourceTree = "<group>"; };
 		5DA272A61D5D0D9800ECA54B /* TillReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TillReceiptViewController.swift; sourceTree = "<group>"; };
 		5DA272A81D5D321200ECA54B /* TillReceiptCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TillReceiptCell.swift; sourceTree = "<group>"; };
+		5DA272AA1D5FE66100ECA54B /* TillBatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TillBatchViewController.swift; sourceTree = "<group>"; };
+		5DA272AC1D5FE93800ECA54B /* BatchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatchCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,10 +118,12 @@
 				5D585E0F1D593B2400AA9EE8 /* LaunchScreen.storyboard */,
 				5D585E121D593B2400AA9EE8 /* Info.plist */,
 				5D585E0A1D593B2400AA9EE8 /* AppDeploymentProject.xcdatamodeld */,
-				5D585E341D5A53FA00AA9EE8 /* Receipt.swift */,
 				5D585E361D5A716200AA9EE8 /* TillMainViewController.swift */,
 				5DA272A61D5D0D9800ECA54B /* TillReceiptViewController.swift */,
+				5DA272AA1D5FE66100ECA54B /* TillBatchViewController.swift */,
+				5D585E341D5A53FA00AA9EE8 /* ReceiptData.swift */,
 				5DA272A81D5D321200ECA54B /* TillReceiptCell.swift */,
+				5DA272AC1D5FE93800ECA54B /* BatchCell.swift */,
 			);
 			path = AppDeploymentProject;
 			sourceTree = "<group>";
@@ -272,11 +278,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DA272A71D5D0D9800ECA54B /* TillReceiptViewController.swift in Sources */,
-				5D585E351D5A53FA00AA9EE8 /* Receipt.swift in Sources */,
+				5D585E351D5A53FA00AA9EE8 /* ReceiptData.swift in Sources */,
 				5D585E0C1D593B2400AA9EE8 /* AppDeploymentProject.xcdatamodeld in Sources */,
 				5D585E061D593B2400AA9EE8 /* ViewController.swift in Sources */,
+				5DA272AD1D5FE93800ECA54B /* BatchCell.swift in Sources */,
 				5D585E041D593B2400AA9EE8 /* AppDelegate.swift in Sources */,
 				5D585E371D5A716200AA9EE8 /* TillMainViewController.swift in Sources */,
+				5DA272AB1D5FE66100ECA54B /* TillBatchViewController.swift in Sources */,
 				5DA272A91D5D321200ECA54B /* TillReceiptCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
