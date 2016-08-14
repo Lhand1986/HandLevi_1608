@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
+    
+    var managedObjContext: NSManagedObjectContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()

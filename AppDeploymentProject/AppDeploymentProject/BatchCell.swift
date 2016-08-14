@@ -23,6 +23,7 @@ class BatchCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //Initializer function that can be called to set the value of the cell label
     func setupCell(item: String) {
         itemLabel.text = item
     }

@@ -11,15 +11,12 @@ import UIKit
 class TillMainViewController: UIViewController {
 
     @IBOutlet weak var calculateLabel: UILabel!
-    
     @IBOutlet weak var numberPad: UIView!
     
     // Initialization of singleton
     let receiptItems = ReceiptData.sharedInstance
     
     var numberCheck: Bool = false
-    
-//    var decimalCheck: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +29,7 @@ class TillMainViewController: UIViewController {
     //MARK - IBActions
     @IBAction func batchReport(sender: AnyObject) {
     }
-    
+    // Create a function that will allow the number pressed to display on the calculateLabel in the appropriate location
     @IBAction func numberSelect(sender: AnyObject) {
         let buttonPress = sender.currentTitle!
         if numberCheck {
@@ -42,16 +39,16 @@ class TillMainViewController: UIViewController {
             numberCheck = true
         }
     }
+    // Set function that will append the displayed value to the receiptItems array
     @IBAction func addButton(sender: UIButton) {
-        
         if let item = Float(calculateLabel.text!) {
             let testValue = floorf(item * 100) / 100
             receiptItems.itemArray.append(testValue)
-            
             calculateLabel.text = nil
             numberCheck = false
         }
     }
+    // Set function that will append the displayed value to the receiptItems array as a negative value
     @IBAction func subButton(sender: UIButton) {
         //Perform optional chaining on calculateLabel, append the negative value to the receiptItems array
         if let item = calculateLabel.text {
@@ -70,11 +67,8 @@ class TillMainViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation*/
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toReceipt" {
-//            print(receiptItems.itemArray)
-//            let receiptDestination = segue.destinationViewController as! TillReceiptViewController
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        }
+//    }
 
 }

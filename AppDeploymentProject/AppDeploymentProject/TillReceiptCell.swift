@@ -11,7 +11,7 @@ import UIKit
 class TillReceiptCell: UITableViewCell {
     @IBOutlet weak var itemLabel: UILabel!
     
-    
+    //Initializer function that can be called to set the text value of the cell label
     func setupCell(item: String) {
         itemLabel.text = item
     }

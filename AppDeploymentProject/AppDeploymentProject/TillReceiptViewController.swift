@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TillReceiptViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -19,32 +20,37 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
     let receiptItems = ReceiptData.sharedInstance
     var receiptSubtotal: Float! = 0.0
     
+    //Initializing coreData structures
+    var mox:NSManagedObjectContext!
+    var moxDesc:NSEntityDescription!
+    var moxObj:NSManagedObject!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(receiptItems.itemArray)
+        
+        //Calculate the items in the itemArray to determine a subTotal value
         for i in 0..<receiptItems.itemArray.count {
             receiptSubtotal = receiptSubtotal + receiptItems.itemArray[i]
         }
         subTotalLabel.text = String(receiptSubtotal)
         
         /* 
+         DEVELOPER NOTE: THESE NEED TO BE ADDRESSED WHEN A TAXES SECTION IS ADDED TO THE OPTIONS MENU
          taxesLabel.text = String(receiptSubtotal / taxes)
          totalLabel.text = String(taxes + receiptSubtotal)
          */
         
-        print(receiptItems.itemArray.count)
-//        receiptTable.dataSource = self
-
-        // Do any additional setup after loading the view.
+        // Declaring the necessary variables for the managed object in Core Data
+        mox = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        moxDesc = NSEntityDescription.entityForName("Receipt", inManagedObjectContext: mox)
+        moxObj = NSManagedObject(entity: moxDesc, insertIntoManagedObjectContext: mox)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: Table View
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -58,22 +64,22 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
         return cell
     }
     
+    // Saving totals out for use in the batch report, and add them to the appropriate key values in Core Data
     @IBAction func printButton(sender: AnyObject) {
-        //Save totals out for use in the batch report on print
-        print(Float(receiptSubtotal))
         receiptItems.batchTotalArray.append(receiptSubtotal)
-        
+        let receiptDateTime = receiptItems.timestamp()
+        moxObj.setValue(receiptItems.itemArray, forKey: "items");moxObj.setValue(receiptDateTime, forKey: "date")
+        do {try mox.save()} catch {print("SaveFailed")}
+        receiptItems.itemArray = []
     }
+    // Clear out the items in view and in the itemArray, then close out the navigation controller
     @IBAction func cancelButton(sender: AnyObject) {
         receiptItems.itemArray = []
         clearItems()
-//        receiptTable.reloadData()
         self.navigationController?.popViewControllerAnimated(true)
         
     }
-    
     // MARK: User defined functions
-    
     func clearItems() {
         receiptSubtotal = 0.0
         subTotalLabel.text = ""

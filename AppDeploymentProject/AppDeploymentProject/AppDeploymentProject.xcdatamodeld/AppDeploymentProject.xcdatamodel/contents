@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
-    <entity name="Batch" syncable="YES"/>
-    <entity name="Receipt" syncable="YES"/>
+    <entity name="Batch" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="totals" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <entity name="Receipt" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="items" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Receipt" positionX="-63" positionY="-18" width="128" height="45"/>
-        <element name="Batch" positionX="-54" positionY="-9" width="128" height="45"/>
+        <element name="Batch" positionX="-54" positionY="-9" width="128" height="75"/>
+        <element name="Receipt" positionX="-63" positionY="-18" width="128" height="75"/>
     </elements>
 </model>
