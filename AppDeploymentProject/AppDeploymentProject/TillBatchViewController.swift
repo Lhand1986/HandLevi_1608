@@ -62,20 +62,23 @@ class TillBatchViewController: UIViewController, UITableViewDataSource, UITableV
     // Apply data values to the Core Data, clear the necessary arrays afterwards
     @IBAction func printDay(sender: AnyObject) {
         batchTimeDate = receiptData.timestamp()
-        batch.setValue(batchTimeDate, forKey: "date");batch.setValue(receiptData.batchTotalArray, forKey: "totals")
+        batch.setValue(batchTimeDate, forKey: "date")
+        batch.setValue(receiptData.batchTotalArray, forKey: "totals")
         do {try managedContext.save()} catch {print("SaveFailed")}
         receiptData.itemArray = []
         receiptData.batchTotalArray = []
+        
     }
     
-    // Set the load array function for proof of Core Data loading
+    
     @IBAction func loadArray() {
         let batchFetch = NSFetchRequest(entityName: "Batch")
         do {
             if let results = try managedContext.executeFetchRequest(batchFetch) as? [NSManagedObject] {
                 batch = results[0]
                 receiptData.batchTotalArray = batch.valueForKey("totals") as! [Float]
-            }}catch{print("Load Failed")}}
+            }
+        }catch{print("Load Failed")}}
     
     
     /*
