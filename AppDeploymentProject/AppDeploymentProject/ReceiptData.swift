@@ -18,11 +18,24 @@ class ReceiptData {
     var taxes: Float = 0
     var subTotal: Float = 0
     var total: Float = 0
+    var taxMultiplier: Float!
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
     
     // Set up a function to assign a timestamp to each saved entry in regards to Core Data
     func timestamp() -> String{
         let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
         return timestamp
+    }
+    
+    func setTaxes(taxesValue: Float) {
+        defaults.setObject(taxesValue, forKey: "taxMultiplier")
+    }
+    
+    func getTaxes() {
+        if (defaults.objectForKey("taxMultiplier") != nil) {
+            taxMultiplier = defaults.floatForKey("taxMultiplier")
+        }
     }
     
 }

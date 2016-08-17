@@ -21,6 +21,10 @@
 		5DA272A91D5D321200ECA54B /* TillReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA272A81D5D321200ECA54B /* TillReceiptCell.swift */; };
 		5DA272AB1D5FE66100ECA54B /* TillBatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA272AA1D5FE66100ECA54B /* TillBatchViewController.swift */; };
 		5DA272AD1D5FE93800ECA54B /* BatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA272AC1D5FE93800ECA54B /* BatchCell.swift */; };
+		5DC78F071D63625100A3AFA7 /* ReceiptObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC78F061D63625100A3AFA7 /* ReceiptObject.swift */; };
+		5DC78F4A1D63C7BE00A3AFA7 /* HistoryMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC78F491D63C7BE00A3AFA7 /* HistoryMainViewController.swift */; };
+		5DC78F4C1D63C7DC00A3AFA7 /* HistoryTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC78F4B1D63C7DC00A3AFA7 /* HistoryTransactionsViewController.swift */; };
+		5DC78F4E1D63C8AF00A3AFA7 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC78F4D1D63C8AF00A3AFA7 /* OptionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		5DA272A81D5D321200ECA54B /* TillReceiptCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TillReceiptCell.swift; sourceTree = "<group>"; };
 		5DA272AA1D5FE66100ECA54B /* TillBatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TillBatchViewController.swift; sourceTree = "<group>"; };
 		5DA272AC1D5FE93800ECA54B /* BatchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatchCell.swift; sourceTree = "<group>"; };
+		5DC78F061D63625100A3AFA7 /* ReceiptObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptObject.swift; sourceTree = "<group>"; };
+		5DC78F491D63C7BE00A3AFA7 /* HistoryMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryMainViewController.swift; sourceTree = "<group>"; };
+		5DC78F4B1D63C7DC00A3AFA7 /* HistoryTransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTransactionsViewController.swift; sourceTree = "<group>"; };
+		5DC78F4D1D63C8AF00A3AFA7 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,8 +130,12 @@
 				5DA272A61D5D0D9800ECA54B /* TillReceiptViewController.swift */,
 				5DA272AA1D5FE66100ECA54B /* TillBatchViewController.swift */,
 				5D585E341D5A53FA00AA9EE8 /* ReceiptData.swift */,
+				5DC78F061D63625100A3AFA7 /* ReceiptObject.swift */,
 				5DA272A81D5D321200ECA54B /* TillReceiptCell.swift */,
 				5DA272AC1D5FE93800ECA54B /* BatchCell.swift */,
+				5DC78F491D63C7BE00A3AFA7 /* HistoryMainViewController.swift */,
+				5DC78F4B1D63C7DC00A3AFA7 /* HistoryTransactionsViewController.swift */,
+				5DC78F4D1D63C8AF00A3AFA7 /* OptionsViewController.swift */,
 			);
 			path = AppDeploymentProject;
 			sourceTree = "<group>";
@@ -281,11 +293,15 @@
 				5D585E351D5A53FA00AA9EE8 /* ReceiptData.swift in Sources */,
 				5D585E0C1D593B2400AA9EE8 /* AppDeploymentProject.xcdatamodeld in Sources */,
 				5D585E061D593B2400AA9EE8 /* ViewController.swift in Sources */,
+				5DC78F4C1D63C7DC00A3AFA7 /* HistoryTransactionsViewController.swift in Sources */,
 				5DA272AD1D5FE93800ECA54B /* BatchCell.swift in Sources */,
 				5D585E041D593B2400AA9EE8 /* AppDelegate.swift in Sources */,
+				5DC78F4A1D63C7BE00A3AFA7 /* HistoryMainViewController.swift in Sources */,
+				5DC78F4E1D63C8AF00A3AFA7 /* OptionsViewController.swift in Sources */,
 				5D585E371D5A716200AA9EE8 /* TillMainViewController.swift in Sources */,
 				5DA272AB1D5FE66100ECA54B /* TillBatchViewController.swift in Sources */,
 				5DA272A91D5D321200ECA54B /* TillReceiptCell.swift in Sources */,
+				5DC78F071D63625100A3AFA7 /* ReceiptObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

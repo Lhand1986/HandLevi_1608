@@ -68,8 +68,11 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func printButton(sender: AnyObject) {
         receiptItems.batchTotalArray.append(receiptSubtotal)
         let receiptDateTime = receiptItems.timestamp()
+//        let saveObj = NSEntityDescription.insertNewObjectForEntityForName("Receipt", inManagedObjectContext: mox) as! ReceiptObject
         moxObj.setValue(receiptItems.itemArray, forKey: "items")
         moxObj.setValue(receiptDateTime, forKey: "date")
+//        saveObj.setValue(receiptItems.itemArray, forKey: "items")
+//        saveObj.setValue(receiptDateTime, forKey: "date")
         do {try mox.save()} catch {print("SaveFailed")}
         receiptItems.itemArray = []
     }
