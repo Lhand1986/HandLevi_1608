@@ -47,13 +47,6 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
         taxesLabel.text = String(taxesValue)
         totalLabel.text = String(totalValue)
         
-        /* 
-         DEVELOPER NOTE: THESE NEED TO BE ADDRESSED WHEN A TAXES SECTION IS ADDED TO THE OPTIONS MENU
-         taxesLabel.text = String(receiptSubtotal / taxes)
-         totalLabel.text = String(taxes + receiptSubtotal)
-         */
-        
-        // Declaring the necessary variables for the managed object in Core Data
         mox = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         moxDesc = NSEntityDescription.entityForName("Receipt", inManagedObjectContext: mox)
         moxObj = NSManagedObject(entity: moxDesc, insertIntoManagedObjectContext: mox)
@@ -87,43 +80,20 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
         
         let printInfo = UIPrintInfo(dictionary:nil)
         printInfo.outputType = UIPrintInfoOutputType.General
-//        printInfo.jobName = "My Print Job"
-        
-        // Set up print controller
         let printController = UIPrintInteractionController.sharedPrintController()
         printController.printInfo = printInfo
         
-        // Assign a UIImage version of my UIView as a printing iten
         printController.printingItem = self.view.toImage()
         
         let printer: UIPrinter = UIPrinter(URL: receiptItems.savedPrinterURL!)
         
-        // Do it
-//        printController.presentFromRect(self.view.frame, inView: self.view, animated: true, completionHandler: nil)
         printController.printToPrinter(printer, completionHandler: nil)
-        
-//        let printController = UIPrintInteractionController.sharedPrintController()
-//        let printer: UIPrinter = UIPrinter(URL: receiptItems.savedPrinterURL!)
-//        printController.printToPrinter(printer, completionHandler: nil)
-//        let formatter = UIViewPrintFormatter()
-//        printController.printFormatter = formatter
-//        printController.printToPrinter(receiptItems.printer, completionHandler: nil)
-//        receiptItems.batchTotalArray.append(receiptSubtotal)
+ 
         let receiptDateTime = receiptItems.timestamp()
         let receiptDate = receiptItems.datestamp()
-//        print("Print Button")
-//        printToPrinter(receiptItems.printer, completionHandler: UIPrintInteractionCompletionHandler)
-//        if UIPrintInteractionController.canPrintURL(receiptItems.savedPrinterURL!) {
-//            let printInfo = UIPrintInfo(dictionary: nil)
-//            printInfo.jobName = receiptItems.savedPrinterURL!.lastPathComponent!
-//            print("Can Print")
-//        }
-//        let saveObj = NSEntityDescription.insertNewObjectForEntityForName("Receipt", inManagedObjectContext: mox) as! ReceiptObject
         moxObj.setValue(receiptItems.itemArray, forKey: "items")
         moxObj.setValue(receiptDateTime, forKey: "dateTime")
         moxObj.setValue(receiptDate, forKey: "date")
-//        saveObj.setValue(receiptItems.itemArray, forKey: "items")
-//        saveObj.setValue(receiptDateTime, forKey: "date")
         do {try mox.save()} catch {print("SaveFailed")}
         receiptItems.itemArray = []
     }
