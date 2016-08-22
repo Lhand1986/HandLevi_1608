@@ -20,7 +20,7 @@ class TillMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        receiptItems.getTaxes()
+        receiptItems.getDefaults()
     }
 
     override func didReceiveMemoryWarning() {

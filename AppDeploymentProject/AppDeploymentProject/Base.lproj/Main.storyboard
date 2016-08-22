@@ -757,13 +757,6 @@
                                     <outlet property="delegate" destination="nrD-WD-kJQ" id="K2h-zP-5B1"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xb-OE-ZBV">
-                                <rect key="frame" x="35" y="535" width="33" height="30"/>
-                                <state key="normal" title="Print"/>
-                                <connections>
-                                    <action selector="printButton:" destination="nrD-WD-kJQ" eventType="touchUpInside" id="hHy-o8-3V4"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbF-HA-qFR">
                                 <rect key="frame" x="277" y="535" width="45" height="30"/>
                                 <state key="normal" title="ReAdd"/>
@@ -853,8 +846,15 @@
                                     <constraint firstItem="dg6-cP-kM4" firstAttribute="top" secondItem="Ae1-rm-3za" secondAttribute="top" id="wNA-S8-Pp9"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xb-OE-ZBV">
+                                <rect key="frame" x="35" y="535" width="33" height="30"/>
+                                <state key="normal" title="Print"/>
+                                <connections>
+                                    <action selector="printButton:" destination="nrD-WD-kJQ" eventType="touchUpInside" id="hHy-o8-3V4"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.72941176470588232" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
                             <constraint firstItem="Jge-Dj-sPx" firstAttribute="top" secondItem="Zk1-ml-tkm" secondAttribute="bottom" constant="20" id="7Jg-tN-dMz"/>
                             <constraint firstItem="Ae1-rm-3za" firstAttribute="top" secondItem="H4g-79-YZG" secondAttribute="bottom" constant="10" id="BPR-B2-a20"/>
@@ -984,7 +984,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.72941176470588232" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kRb-46-u7A" firstAttribute="leading" secondItem="Fbg-ae-55U" secondAttribute="leading" constant="35" id="6CN-jN-O9J"/>
                             <constraint firstAttribute="trailing" secondItem="kRb-46-u7A" secondAttribute="trailing" constant="35" id="93t-rp-nSS"/>
@@ -1022,7 +1022,6 @@
                     <view key="view" contentMode="scaleToFill" id="11d-EY-vtx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.72941176470588232" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
@@ -1074,7 +1073,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.94901960784313721" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.72941176470588232" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="aot-8Y-z0V" secondAttribute="trailing" constant="15" id="X9N-1f-t3c"/>
                             <constraint firstItem="aot-8Y-z0V" firstAttribute="top" secondItem="Q82-Rd-Htj" secondAttribute="bottom" constant="15" id="dXv-lf-mYs"/>
@@ -1134,11 +1133,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sales Tax" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LF6-sy-0NI">
                                 <rect key="frame" x="50" y="234" width="85" height="23.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="0.58431372549019611" green="0.59607843137254901" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.31372549019607843" green="0.31372549019607843" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.81176470588235294" green="0.96862745098039216" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.72941176470588232" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="QXL-2E-6mR" firstAttribute="width" secondItem="csc-Qm-Oj1" secondAttribute="width" multiplier="0.5" id="3c4-Z4-SIl"/>
                             <constraint firstItem="QXL-2E-6mR" firstAttribute="height" secondItem="csc-Qm-Oj1" secondAttribute="height" multiplier="0.15" id="4ka-TO-HE5"/>
@@ -1207,7 +1206,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.94901960784313721" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.72941176470588232" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ohI-Pw-Jeo" firstAttribute="top" secondItem="De9-gg-3Ic" secondAttribute="bottom" constant="15" id="8eE-xV-tWE"/>
                             <constraint firstItem="ohI-Pw-Jeo" firstAttribute="centerX" secondItem="fOv-VJ-eJ8" secondAttribute="centerX" id="8sj-Z9-mD6"/>
@@ -1236,7 +1235,7 @@
                     <view key="view" contentMode="scaleToFill" id="Qms-7B-l3y">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.94901960784313721" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.72941176470588232" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
@@ -1255,7 +1254,7 @@
                     <view key="view" contentMode="scaleToFill" id="SXd-AK-kNa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.94901960784313721" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.72941176470588232" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
@@ -1274,7 +1273,7 @@
                     <view key="view" contentMode="scaleToFill" id="TlE-Oc-eXf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.94901960784313721" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.72941176470588232" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
@@ -1293,7 +1292,7 @@
                     <view key="view" contentMode="scaleToFill" id="m1N-bz-dW4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.94901960784313721" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.72941176470588232" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                 </viewController>

@@ -11,6 +11,8 @@ import UIKit
 class OptionsViewController: UIViewController, UITextFieldDelegate {
     
     let sharedInstance = ReceiptData.sharedInstance
+    
+    var printerDelegate: UIPrinterPickerControllerDelegate!
 
     @IBOutlet weak var taxField: UITextField!
     
@@ -43,8 +45,12 @@ class OptionsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func printButton(sender: UIButton) {
-        print(sharedInstance.defaults.floatForKey("taxMultiplier"))
+//        let printController = UIPrinterPickerController.init(initiallySelectedPrinter: sharedInstance.printer)
+//        printController.delegate = printerDelegate
+//        printController.presentAnimated(true, completionHandler: nil)
+        sharedInstance.printerSelect()
     }
+    
     
 
     /*

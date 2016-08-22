@@ -7,11 +7,49 @@
 //
 
 import UIKit
+import CoreData
 
 class HistoryTransactionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var mox: NSManagedObjectContext!
+    var moxDesc: NSEntityDescription!
+    var savedBatches: [NSManagedObject] = []
+    
+    let fetchRequest = NSFetchRequest(entityName: "Receipt")
+    let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+    
+    var batchDates: [String] = []
+    
+    let sharedInstance = ReceiptData.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mox = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        moxDesc = NSEntityDescription.entityForName("Receipt", inManagedObjectContext: mox)
+        savedBatches = [NSManagedObject(entity: moxDesc, insertIntoManagedObjectContext: mox)]
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        do {
+            if let results = try mox.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+                for managedObject in results {
+                    if let date = managedObject.valueForKey("date") {
+                        if date as! String == sharedInstance.selectedBatch{
+                            if let dateTime = managedObject.valueForKey("dateTime") {
+                                batchDates.append(dateTime as! String)
+                            }
+//                        if date as! String == sharedInstance.selectedBatch {  
+//                            batchDates.append(date as! String)
+                        }
+//                        print(date)
+//                        batchDates.append(date as! String)
+                    }
+                }
+//                print(batchDates)
+                //                savedBatches = results
+                //                print(savedBatches)
+                //                batchDates = savedBatches
+            }}catch{print("Load Failed")}
 
         // Do any additional setup after loading the view.
     }
@@ -22,13 +60,17 @@ class HistoryTransactionsViewController: UIViewController, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return batchDates.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("repeatingCell", forIndexPath: indexPath)
-        cell.textLabel!.text = "Boop"
+        cell.textLabel!.text = batchDates[indexPath.row]
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        sharedInstance.selectedReceipt = batchDates[indexPath.row]
     }
     
 
