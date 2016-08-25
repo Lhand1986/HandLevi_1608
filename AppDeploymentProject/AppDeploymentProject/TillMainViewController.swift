@@ -6,6 +6,7 @@
 //  Copyright © 2016 Levi Hand. All rights reserved.
 //
 
+
 import UIKit
 
 class TillMainViewController: UIViewController {
@@ -17,6 +18,8 @@ class TillMainViewController: UIViewController {
     let receiptItems = ReceiptData.sharedInstance
     
     var numberCheck: Bool = false
+    
+    var numberArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,7 @@ class TillMainViewController: UIViewController {
     // Create a function that will allow the number pressed to display on the calculateLabel in the appropriate location
     @IBAction func numberSelect(sender: AnyObject) {
         let buttonPress = sender.currentTitle!
+        numberArray.append(String(buttonPress!))
         if numberCheck {
             calculateLabel!.text = calculateLabel!.text! + String(buttonPress!)
         } else {
@@ -40,6 +44,23 @@ class TillMainViewController: UIViewController {
             numberCheck = true
         }
     }
+    
+    /*Adding in function to properly handle removal of a character from the calculation
+     by taking the string in the label, breaking it into an array of characters, removing
+     the last character from the array, and then resetting the displayed label values to
+     reflect the proper sequence of the updated array.*/
+    @IBAction func delButton(sender: AnyObject) {
+        if calculateLabel.text != nil {
+            var tempString = Array(calculateLabel.text!.characters)
+            tempString.removeLast(1)
+            calculateLabel.text = ""
+            for num in 0..<tempString.count {
+                calculateLabel.text = calculateLabel.text! + String(tempString[num])
+            }
+        }
+    }
+    
+    
     // Set function that will append the displayed value to the receiptItems array
     @IBAction func addButton(sender: UIButton) {
         if let item = Float(calculateLabel.text!) {
