@@ -40,13 +40,16 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
             receiptSubtotal = receiptSubtotal + receiptItems.itemArray[i]
         }
         subTotalValue = receiptSubtotal
-        taxesValue = floorf(receiptSubtotal * (receiptItems.taxMultiplier / 100) * 100) / 100
-        totalValue = taxesValue + subTotalValue
-        
-        subTotalLabel.text = String(subTotalValue)
-        taxesLabel.text = String(taxesValue)
-        totalLabel.text = String(totalValue)
-        
+        if let taxes = receiptItems.taxMultiplier {
+            taxesValue = floorf(receiptSubtotal * (taxes / 100) * 100) / 100
+            totalValue = taxesValue + subTotalValue
+            subTotalLabel.text = String(subTotalValue)
+            taxesLabel.text = String(taxesValue)
+            totalLabel.text = String(totalValue)
+        } else {
+            taxesLabel.text = "Please add tax"
+            totalLabel.text = "in options screen"
+        }
         mox = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         moxDesc = NSEntityDescription.entityForName("Receipt", inManagedObjectContext: mox)
         moxObj = NSManagedObject(entity: moxDesc, insertIntoManagedObjectContext: mox)
@@ -75,20 +78,15 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     // Saving totals out for use in the batch report, and add them to the appropriate key values in Core Data
+    // Print the information displayed on screen
     @IBAction func printButton(sender: AnyObject) {
         receiptItems.batchTotalArray.append(receiptSubtotal)
-        
         let printInfo = UIPrintInfo(dictionary:nil)
         printInfo.outputType = UIPrintInfoOutputType.General
         let printController = UIPrintInteractionController.sharedPrintController()
         printController.printInfo = printInfo
-        
         printController.printingItem = self.view.toImage()
-        
-        let printer: UIPrinter = UIPrinter(URL: receiptItems.savedPrinterURL!)
-        
-        printController.printToPrinter(printer, completionHandler: nil)
- 
+        printController.printToPrinter(receiptItems.printer, completionHandler: nil)
         let receiptDateTime = receiptItems.timestamp()
         let receiptDate = receiptItems.datestamp()
         moxObj.setValue(receiptItems.itemArray, forKey: "items")
@@ -102,7 +100,6 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
         receiptItems.itemArray = []
         clearItems()
         self.navigationController?.popViewControllerAnimated(true)
-        
     }
     // MARK: User defined functions
     func clearItems() {
@@ -111,28 +108,4 @@ class TillReceiptViewController: UIViewController, UITableViewDataSource, UITabl
         taxesLabel.text = ""
         totalLabel.text = ""
     }
-    
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
-//extension UIView {
-//    func toImage() -> UIImage {
-//        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.mainScreen().scale)
-//        
-//        drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
-//        
-//        let image = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        return image
-//    }
-//}

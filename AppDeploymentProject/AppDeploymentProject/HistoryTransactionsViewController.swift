@@ -29,6 +29,7 @@ class HistoryTransactionsViewController: UIViewController, UITableViewDataSource
         moxDesc = NSEntityDescription.entityForName("Receipt", inManagedObjectContext: mox)
         savedBatches = [NSManagedObject(entity: moxDesc, insertIntoManagedObjectContext: mox)]
         
+        //Process fetch request to pull information from core data
         fetchRequest.sortDescriptors = [sortDescriptor]
         do {
             if let results = try mox.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
@@ -38,17 +39,9 @@ class HistoryTransactionsViewController: UIViewController, UITableViewDataSource
                             if let dateTime = managedObject.valueForKey("dateTime") {
                                 batchDates.append(dateTime as! String)
                             }
-//                        if date as! String == sharedInstance.selectedBatch {  
-//                            batchDates.append(date as! String)
                         }
-//                        print(date)
-//                        batchDates.append(date as! String)
                     }
                 }
-//                print(batchDates)
-                //                savedBatches = results
-                //                print(savedBatches)
-                //                batchDates = savedBatches
             }}catch{print("Load Failed")}
 
         // Do any additional setup after loading the view.
@@ -59,6 +52,8 @@ class HistoryTransactionsViewController: UIViewController, UITableViewDataSource
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //MARK: TABLE VIEW
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return batchDates.count
     }
@@ -73,15 +68,8 @@ class HistoryTransactionsViewController: UIViewController, UITableViewDataSource
         sharedInstance.selectedReceipt = batchDates[indexPath.row]
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: IBACTIONS
+    
+    @IBAction func dayBatch(sender: AnyObject) {
     }
-    */
-
 }

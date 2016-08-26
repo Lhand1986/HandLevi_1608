@@ -44,7 +44,6 @@ class TillBatchViewController: UIViewController, UITableViewDataSource, UITableV
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: Table View
@@ -64,6 +63,12 @@ class TillBatchViewController: UIViewController, UITableViewDataSource, UITableV
         batchTimeDate = receiptData.datestamp()
         batch.setValue(batchTimeDate, forKey: "date")
         batch.setValue(receiptData.batchTotalArray, forKey: "totals")
+        let printInfo = UIPrintInfo(dictionary:nil)
+        printInfo.outputType = UIPrintInfoOutputType.General
+        let printController = UIPrintInteractionController.sharedPrintController()
+        printController.printInfo = printInfo
+        printController.printingItem = self.view.toImage()
+        printController.printToPrinter(receiptData.printer, completionHandler: nil)
         do {try managedContext.save()} catch {print("SaveFailed")}
         receiptData.itemArray = []
         receiptData.batchTotalArray = []
@@ -76,16 +81,4 @@ class TillBatchViewController: UIViewController, UITableViewDataSource, UITableV
                 receiptData.batchTotalArray = batch.valueForKey("totals") as! [Float]
             }
         }catch{print("Load Failed")}}
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

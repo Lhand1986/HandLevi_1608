@@ -29,26 +29,23 @@ class HistoryMainViewController: UIViewController, UITableViewDataSource, UITabl
         moxDesc = NSEntityDescription.entityForName("Batch", inManagedObjectContext: mox)
         savedBatches = [NSManagedObject(entity: moxDesc, insertIntoManagedObjectContext: mox)]
 
-        // Do any additional setup after loading the view.
+        //Set up the fetch request for pulling the batch data from core data
         fetchRequest.sortDescriptors = [sortDescriptor]
         do {
             if let results = try mox.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
                 for managedObject in results {
                     if let date = managedObject.valueForKey("date") {
-                        print("Inside \(date)")
                         batchDates.append(date as! String)
                     }
                 }
-                print("Outside \(batchDates)")
-//                savedBatches = results
-//                print(savedBatches)
-//                batchDates = savedBatches
             }}catch{print("Load Failed")}}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: TABLE VIEW SET UP
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return batchDates.count
@@ -60,6 +57,7 @@ class HistoryMainViewController: UIViewController, UITableViewDataSource, UITabl
         return cell
     }
     
+    //Push the date selected through to the singleton for utilization in the next screen
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         sharedInstance.selectedBatch = batchDates[indexPath.row]
     }

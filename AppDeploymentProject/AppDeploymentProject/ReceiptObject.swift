@@ -10,6 +10,6 @@ import UIKit
 import CoreData
 
 class ReceiptObject: NSManagedObject {
-    @NSManaged var date: NSDate?
-    @NSManaged var items: [Float]?
+//    @NSManaged var date: NSDate?
+//    @NSManaged var items: [Float]?
 }

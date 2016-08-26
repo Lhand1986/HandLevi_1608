@@ -1,0 +1,6 @@
+framework module Pods_AppDeploymentProject {
+  umbrella header "Pods-AppDeploymentProject-umbrella.h"
+
+  export *
+  module * { export * }
+}

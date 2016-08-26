@@ -19,11 +19,14 @@ class TillMainViewController: UIViewController {
     
     var numberCheck: Bool = false
     
-    var numberArray: [String] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         receiptItems.getDefaults()
+        
+        //Error handling for the printer, if the printer has not been selected, call the printer select function
+        if receiptItems.printer == nil {
+            receiptItems.printerSelect()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +39,6 @@ class TillMainViewController: UIViewController {
     // Create a function that will allow the number pressed to display on the calculateLabel in the appropriate location
     @IBAction func numberSelect(sender: AnyObject) {
         let buttonPress = sender.currentTitle!
-        numberArray.append(String(buttonPress!))
         if numberCheck {
             calculateLabel!.text = calculateLabel!.text! + String(buttonPress!)
         } else {
@@ -81,16 +83,4 @@ class TillMainViewController: UIViewController {
             numberCheck = false
         }
     }
-    
-    
-    //MARK - User defined functions
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation*/
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        }
-//    }
-
 }

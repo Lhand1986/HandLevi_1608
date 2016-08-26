@@ -18,14 +18,6 @@ class OptionsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if sharedInstance.taxMultiplier == nil {
-            print("Tax multiplier empty")
-        }
-        
-        
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,9 +25,9 @@ class OptionsViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    //Push the tax multiplier through the shared instance, and save the tax multiplier to the defaults of the device.
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if let taxText = Float(taxField.text!) {
-            print("Tax Field: \(taxText)")
             sharedInstance.taxMultiplier = Float(taxText)
             sharedInstance.setTaxes(taxText)
         }
@@ -44,10 +36,8 @@ class OptionsViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    //Allow the print button to call the necessary function to select a printer
     @IBAction func printButton(sender: UIButton) {
-//        let printController = UIPrinterPickerController.init(initiallySelectedPrinter: sharedInstance.printer)
-//        printController.delegate = printerDelegate
-//        printController.presentAnimated(true, completionHandler: nil)
         sharedInstance.printerSelect()
     }
     
